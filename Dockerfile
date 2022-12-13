@@ -7,7 +7,7 @@ FROM ubuntu:latest
 LABEL MAINTAINER="https://github.com/dbsqp/"
 
 # Copy files
-ADD lnetatmo.py /
+ADD unpoller_*_linux_amd64/unpoller /usr/bin/
 
 # Run
-CMD ["/bin/bash","/get.sh"]
+ENTRYPOINT ["/usr/bin/unpoller"]
