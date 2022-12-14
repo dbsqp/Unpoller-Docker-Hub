@@ -6,13 +6,13 @@ FROM ubuntu:latest
 # Labels
 LABEL MAINTAINER="https://github.com/dbsqp/"
 
-USER root
-
 RUN apt-get update
 
 # Copy files
 #ADD unpoller_*_linux_amd64/unpoller /usr/bin/
 ADD unpoller_2.4.1_linux_amd64/unpoller /usr/bin/
 
+RUN chmod 777 /usr/bin/unpoller
+
 # Run
-#ENTRYPOINT ["/usr/bin/unpoller"]
+ENTRYPOINT ["/usr/bin/unpoller"]
