@@ -6,6 +6,8 @@ FROM ubuntu:latest
 # Labels
 LABEL MAINTAINER="https://github.com/dbsqp/"
 
+USER root
+
 RUN apt-get update
 
 # Copy files
