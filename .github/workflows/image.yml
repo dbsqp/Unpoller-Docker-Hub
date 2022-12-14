@@ -22,4 +22,4 @@ jobs:
         run: |
           docker buildx build --push \
             --tag dbsqp/unpoller:latest \
-            --platform linux/arm64 .
+            --platform linux/amd64 .
