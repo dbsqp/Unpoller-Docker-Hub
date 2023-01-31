@@ -10,7 +10,8 @@ RUN apt-get update
 
 # Copy files
 #ADD unpoller_*_linux_amd64/unpoller /usr/bin/
-ADD unpoller_2.4.1_linux_amd64/unpoller /usr/bin/
+#ADD unpoller_2.4.1_linux_amd64/unpoller /usr/bin/
+ADD unpoller_2.7.11_linux_amd64/unpoller /usr/bin/
 
 RUN chmod 777 /usr/bin/unpoller
 
