@@ -3,10 +3,11 @@ Quick hack to get unpoller working on synology docker via GUI.
 
 ## Background
 Creates a [Docker Hub image](https://hub.docker.com/r/dbsqp/unpoller
-) using [Unpoller binary release](https://github.com/unpoller/unpoller/releases) that can be added to Synology docker GUI that currenlty does not support official Github docker reposetery of Unpoller.
+) using [Unpoller binary release](https://github.com/unpoller/unpoller/releases) that can be added to Synology docker GUI that currenlty does not support official [Github docker repository](https://github.com/unpoller/unpoller/pkgs/container/unpoller) of Unpoller.
 
 ## Links
 - https://github.com/unpoller/unpoller/releases
+- https://github.com/unpoller/unpoller/pkgs/container/unpoller
 - https://hub.docker.com/r/dbsqp/unpoller
 
 ## Process
