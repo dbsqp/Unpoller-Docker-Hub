@@ -15,5 +15,5 @@ Creates a [Docker Hub image](https://hub.docker.com/r/dbsqp/unpoller
 2. Uncompress
 3. Upload to github (drag drop, commit)
 4. Delete old version (open folder, delete, commit)
-5. Check status Docker Hub
+5. Check status [Docker Hub](https://hub.docker.com/r/dbsqp/unpoller/tags)
 6. Update Synology Docker container
