@@ -1,0 +1,120 @@
+##############################################
+# UniFi Poller primary configuration file.   #
+# YAML FORMAT. Provided values are defaults. #
+# See up.conf.example!        v2             #
+##############################################
+---
+
+poller:
+  debug: false
+  quiet: false
+  plugins: []
+  # log_unknown_types: false   # Set to true to log unknown device types as DEBUG messages.
+                               # By default, newer UniFi device types that aren't recognized
+                               # are silently ignored to reduce log volume. Enable this when
+                               # debugging or reporting new device types to developers.
+
+prometheus:
+  disable:       false
+  http_listen:   "0.0.0.0:9130"
+  ssl_cert_path: ""
+  ssl_key_path:  ""
+  report_errors: false
+  # Cache refresh. Omitted: 60s. 0 / "0s" disables the cache (live /metrics).
+  # Values below 15s warn but are not clamped. Env: UP_PROMETHEUS_INTERVAL.
+  interval:      "60s"
+
+influxdb:
+  disable: false
+  interval: "30s"
+  url:  "http://127.0.0.1:8086"
+  user: "unifipoller"
+  pass: "unifipoller"
+  db:   "unifi"
+  verify_ssl: false
+  tags:
+    customer: abc_corp
+    env: prod
+
+webserver:
+  enable:        false
+  port:          37288
+  html_path:     "/usr/local/lib/unpoller/web"
+  ssl_cert_path: ""
+  ssl_key_path:  ""
+  max_events:    200
+  accounts:
+    captain: "$2a$04$mxw6i0LKH6u46oaLK2cq5eCTAAFkfNiRpzNbz.EyvJZZWNa2FzIlS"
+
+datadog:
+  enable: false
+  address: localhost:8125
+  namespace: ""
+  tags:
+  - customer:abcdef
+
+unifi:
+  dynamic: false
+  defaults:
+    url:  "https://127.0.0.1:8443"
+    user: "unifipoller"
+    pass: "unifipoller"
+    sites:
+      - all
+    timeout: 60s
+    save_ids:    false
+    save_events: false
+    save_alarms: false
+    save_anomalies: false
+    save_protect_logs: false
+    protect_thumbnails: false
+    save_protect_devices: false
+    # protect_api_key: "unifiprotectapikey"
+    # Set true only on a Protect-only console (UNVR): skips the Network API entirely.
+    disable_network: false
+    save_dpi:    false
+    save_sites:  true
+    hash_pii:    false
+    verify_ssl:  false
+    # Added an example for overriding the default site name.
+    # default_site_name_override: "My Custom Default Site"
+
+  controllers:
+   # Repeat the following stanza to poll multiple controllers.
+    - url:  "https://127.0.0.1:8443"
+      user: "unifipoller"
+      pass: "unifipoller"
+      sites:
+        - all
+      save_ids:    false
+      save_events: false
+      save_alarms: false
+      save_anomalies: false
+      save_protect_logs: false
+      protect_thumbnails: false
+      save_protect_devices: false
+      # protect_api_key: "unifiprotectapikey"
+      # Set true only on a Protect-only console (UNVR): skips the Network API entirely.
+      disable_network: false
+      save_dpi:    false
+      save_sites:  true
+      hash_pii:    false
+      verify_ssl:  false
+
+# A UNAS Pro is a standalone UniFi OS console with no Network application, so it is polled
+# by its own input plugin with its own credentials and host -- not as a UniFi controller.
+# This section is optional: with no devices configured the plugin stays silent and inert.
+#unas:
+#  enable: true
+#  defaults:
+#    user:       "unpoller"
+#    pass:       ""
+#    verify_ssl: false
+#    timeout:    "60s"
+#  devices:
+#   # Repeat the following stanza to poll multiple UNAS consoles.
+#    - url:  "https://192.168.1.10"
+#      user: "unpoller"
+#      pass: "unpoller"
+#      verify_ssl: false
+#      timeout: "60s"
